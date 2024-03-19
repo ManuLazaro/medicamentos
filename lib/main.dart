@@ -1,26 +1,35 @@
+//////////////////////////////////////////
+//////////    Clase PRINCIPAL   /////////
+/////////////////////////////////////////
+
 import 'package:flutter/material.dart';
 import 'package:medicamentos/models/MedicamentoManager.dart';
 import 'package:medicamentos/pantallas/crearUsuario.dart';
 import 'package:medicamentos/home.dart';
 
-void main() => runApp(MyApp(medicamentoManager: MedicamentoManager()));
+// objeto medicamento pasado al main para poder trabajar con los objetos creados en toda la aplicacion
+void main() => runApp(MyApp(medicamentoManager: MedicamentoManager())); 
 
-// Esta es la aplicación
+
 class MyApp extends StatelessWidget {
   final MedicamentoManager medicamentoManager;
 
-  // Constructor que recibe un objeto MedicamentoManager.
+  // Constructor que recibe un objeto MedicamentoManager 
   const MyApp({Key? key, required this.medicamentoManager}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Configuración de la aplicación MaterialApp
+    
     return MaterialApp(
-      title: "",
+      title: "Bienvenido",
       home: Inicio(medicamentoManager: medicamentoManager),
     );
   }
 }
+
+/////////////////////////////////////
+////////    Clase Inicio   /////////
+////////////////////////////////////
 
 // Pantalla de inicio
 class Inicio extends StatefulWidget {
@@ -53,7 +62,10 @@ class _InicioState extends State<Inicio> {
   }
 }
 
-// Método que devuelve el cuerpo de la pantalla
+////////////////////////////////////////////////////
+// Método que devuelve el cuerpo de la pantalla  ///
+////////////////////////////////////////////////////
+
 Widget cuerpo(BuildContext context) {
   // Contenedor con degradado y elementos de la pantalla.
   return Container(
@@ -90,6 +102,10 @@ Widget cuerpo(BuildContext context) {
   );
 }
 
+////////////////////////////////////////////
+/////  Widgets de la pantalla inicial /////
+////////////////////////////////////////////
+
 // Widget que muestra el inicio de sesion.
 Widget login() {
   return Text(
@@ -106,10 +122,8 @@ Widget login() {
 // Widget que muestra el campo de entrada de usuario.
 Widget user() {
   return Container(
-    // Configuración del contenedor con relleno y estilo.
     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     child: TextField(
-      // Configuración del campo de entrada.
       decoration: InputDecoration(
         hintText: "Usuario",
         hintStyle: TextStyle(color: Color(0xFF00AAFF)),
@@ -127,10 +141,8 @@ Widget user() {
 // Widget que muestra el campo de entrada de contraseña.
 Widget password() {
   return Container(
-    // Configuración del contenedor con relleno y estilo.
     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     child: TextField(
-      // Configuración del campo de entrada oculto para contraseñas.
       obscureText: true,
       decoration: InputDecoration(
         hintText: "Contraseña",
@@ -146,10 +158,9 @@ Widget password() {
   );
 }
 
-// Widget que muestra la app por primera vez.
+// Widget que muestra el botón de entrar en la app.
 Widget botonEntrar(BuildContext context) {
   return TextButton(
-    // Estilo del botón con fondo blanco y bordes redondeados.
     style: TextButton.styleFrom(
       backgroundColor: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 55, vertical: 5),
@@ -158,7 +169,6 @@ Widget botonEntrar(BuildContext context) {
       ),
     ),
     onPressed: () {
-      // Navegación a la pantalla de inicio.
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Home()),
@@ -175,10 +185,9 @@ Widget botonEntrar(BuildContext context) {
   );
 }
 
-// Widget que muestra la ventana de crear cuenta.
+// Widget que muestra el botón de crear cuenta.
 Widget botonCrear(BuildContext context) {
   return TextButton(
-    // Estilo del botón con fondo azul oscuro y bordes redondeados.
     style: TextButton.styleFrom(
       backgroundColor: Color.fromARGB(255, 0, 22, 121),
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
@@ -187,7 +196,6 @@ Widget botonCrear(BuildContext context) {
       ),
     ),
     onPressed: () {
-      // Navegación a la pantalla de creación de cuenta.
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => CrearUsuario()),
